@@ -17,16 +17,23 @@ export const SingleLevelDropdownMenu = ({
     items,
 }: SingleLevelDropdownMenuProps) => {
     const [open, setOpen] = useState(false);
+    const [focusedIndex, setFocusedIndex] = useState<number | null>(null);
     const handleToggle = () => {
-        setOpen((prev) => !prev);
+        setOpen((prev) => {
+            if(!prev) setFocusedIndex(null);
+            return !prev;
+        });
     };
     const menuRef = useRef<HTMLDivElement | null>(null);
+    const buttonRef = useRef<HTMLButtonElement | null>(null);
     useEffect(() => {
         const handler = (event: MouseEvent | TouchEvent) => {
             if(
                 open &&
                 menuRef.current &&
-                !menuRef.current.contains(event.target as Node)
+                !menuRef.current.contains(event.target as Node) &&
+                buttonRef.current &&
+                !buttonRef.current.contains(event.target as Node)
             ) {
                 setOpen(false);
             }
@@ -41,6 +48,7 @@ export const SingleLevelDropdownMenu = ({
     return (
         <div className = "relative" ref = {menuRef}>
             <button
+                ref = {buttonRef}
                 type = "button"
                 className = "inline-flex items-center justify-center rounded-md text-sm border border-[#e4e4e7] h-10 px-4 py-2"
                 onClick = {handleToggle}
