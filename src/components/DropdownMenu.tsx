@@ -17,7 +17,7 @@ export const SingleLevelDropdownMenu = ({
     items,
 }: SingleLevelDropdownMenuProps) => {
     const [open, setOpen] = useState(false);
-    const [focusedIndex, setFocusedIndex] = useState<number | null>(null);
+    const [, setFocusedIndex] = useState<number | null>(null);
     const handleToggle = () => {
         setOpen((prev) => {
             if(!prev) setFocusedIndex(null);
