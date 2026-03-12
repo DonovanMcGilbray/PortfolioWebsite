@@ -1,4 +1,4 @@
-import { SingleLevelDropdownMenu } from "./DropdownMenu";
+import { SingleLevelDropdownMenu } from "./DropdownMenu.tsx";
 
 export default function Navbar() {
     return (
