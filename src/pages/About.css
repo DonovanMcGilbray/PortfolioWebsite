@@ -1,0 +1,36 @@
+.about-container {
+    display: flex;
+    gap: 40px;
+    max-width: 900px;
+    margin: 60px auto;
+    align-items: center;
+}
+
+.about-image {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+}
+
+.about-text {
+    color: black;
+}
+
+.about-text ul {
+    margin-bottom: 10px;
+}
+
+.resume-button {
+    display: inline-block;
+    padding: 10px 18px;
+    background: black;
+    color: white;
+    border-radius: 6px;
+}
+
+@media (max-width: 768px) {
+    .about-container {
+        flex-direction: column;
+        text-align: center;
+    }
+}

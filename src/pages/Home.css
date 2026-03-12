@@ -38,3 +38,13 @@
     margin-bottom: 20px;
     color: black;
 }
+
+@media (max-width: 768px) {
+    .profile-card {
+        flex-direction: column;
+        text-align: center;
+    }
+    .profile-info {
+        text-align: center;
+    }
+}
