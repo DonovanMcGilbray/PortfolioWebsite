@@ -5,7 +5,8 @@ const posts = [
         slug: "...",
         date: "...",
         excerpt: "...",
-        content: "..."
+        content: "...",
+        coverImage: ""
     },
     {
         id: 2,
@@ -13,7 +14,8 @@ const posts = [
         slug: "...",
         date: "...",
         excerpt: "...",
-        content: "..."
+        content: "...",
+        coverImage: ""
     },
     {
         id: 3,
@@ -21,7 +23,8 @@ const posts = [
         slug: "...",
         date: "...",
         excerpt: "...",
-        content: "..."
+        content: "...",
+        coverImage: ""
     }
 ];
 
