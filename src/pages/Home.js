@@ -13,10 +13,17 @@ function Home() {
                     <h1>Donovan McGilbray</h1>
                     <h2>Software Developer</h2>
                     <p>
-                        I am a student developer interested in frontend software engineering and building web applications. 
-                        I can work with React, JavaScript, HTML, and CSS to create responsive interfaces. 
-                        I have experience building mobile applications using React Native with Expo Go. 
-                        My projects focus on clean component design, structured data, and deploying applications using GitHub and Vercel.
+                        I am a Computer Science student at California State University, Bakersfield - Antelope Valley,
+                        with an expected graduation date of May 2027. I am interested in frontend software engineering 
+                        and building web applications.
+                    </p>
+                    <p>
+                        I work with React, JavaScript, HTML, and CSS to create responsive user interfaces and I have 
+                        experience building mobile applications using React Native with Expo.
+                    </p>
+                    <p>
+                        My projects focus on clean component design, structured data, and deploying applications using 
+                        GitHub and Vercel.
                     </p>
                 </div>
             </div>

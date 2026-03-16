@@ -46,7 +46,7 @@ export const SingleLevelDropdownMenu = ({
         };
     }, [open]);
     return (
-        <div className = "relative" ref = {menuRef}>
+        <div className = "inline-flex relative" ref = {menuRef}>
             <button
                 ref = {buttonRef}
                 type = "button"
@@ -59,7 +59,7 @@ export const SingleLevelDropdownMenu = ({
                 </span>
             </button>
             {open && (
-                <div className = "absolute left-1/2 -translate-x-1/2 top-12">
+                <div className = "absolute right-0 top-12">
                     <ul className = "w-56 h-auto shadow-md rounded-md p-1 border bg-white">
                         {items.map((item) => (
                             <li

@@ -17,7 +17,7 @@ function Portfolio() {
                             <img src = {project.image} alt = {project.title} />
                         </div>
                         <h2>{project.title}</h2>
-                        <p>{project.description}</p>
+                        <p>{project.shortDescription}</p>
                     </Link>
                 ))}
             </div>
