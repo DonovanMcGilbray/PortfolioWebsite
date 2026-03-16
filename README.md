@@ -1,3 +1,36 @@
+Overview
+
+This project is a portfolio website built with React to show programming projects, technical skills, and blog posts. The website includes pages for an introduction, resume information, project portfolio, blog posts, and a contact form
+
+
+Tech Stack
+
+Frontend
+ - React
+ - React Router
+ - JavaScript
+ - HTML
+ - CSS
+Tools & Services
+ - GitHub for version control
+ - Vercel for deployment
+ - Resend API for contact form and handling emails
+
+
+Deployment
+
+The project is deployed using Vercel. Vercel connects directly to the GitHub repository and automatically builds and deploys the site whenever new changes are pushed to the main branch. The deployment process is:
+ - push the code to GitHub repository
+ - Vercel detects the update
+ - Vercel builds the React project
+ - the updated site is published automatically
+
+
+Known Limitations:
+ - the contact form does not work yet, there is a problem connecting to the Resend API
+ - the portfolio information are all static entries and not dynamically loaded from an external source
+
+ 
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
