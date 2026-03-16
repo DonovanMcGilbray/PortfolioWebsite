@@ -44,7 +44,7 @@ const projects = [
         id: 3,
         title: "Stock Tracker App",
         slug: "stock-tracker-app",
-        shortDescription: "",
+        shortDescription: "A React application that retrieves and visualizes stock market data.",
         image: "/project3.png",
         tech: ["React Native", "Expo", "Visual Studio Code"],
         github: "https://github.com/DonovanMcGilbray/Stock-Tracker-App",

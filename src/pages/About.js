@@ -36,7 +36,7 @@ function About() {
                     <li>Developer Tools: Git, GitHub, Visual Studio Code, Vercel</li>
                 </ul>
                 <a href = "/resume.pdf" className = "resume-button">
-                    Download Resume
+                    View Resume
                 </a>
             </div>
         </div>

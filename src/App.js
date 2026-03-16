@@ -14,18 +14,22 @@ import Footer from "./components/Footer";
 function App() {
   return (
     <Router>
-      <Navbar />
-      <Routes>
-        <Route path="/" element = {<Home />} />
-        <Route path="/about" element = {<About />} />
-        <Route path="/resume" element = {<Resume />} />
-        <Route path="/portfolio" element = {<Portfolio />} />
-        <Route path="/portfolio/:slug" element = {<PortfolioDetail />} />
-        <Route path="/blog" element = {<Blog />} />
-        <Route path="/blog/:slug" element = {<BlogDetail />} />
-        <Route path="/contact" element = {<Contact />} />
-      </Routes>
-      <Footer/>
+      <div className = "app-layout">
+        <Navbar />
+        <main className = "app-main">
+          <Routes>
+            <Route path="/" element = {<Home />} />
+            <Route path="/about" element = {<About />} />
+            <Route path="/resume" element = {<Resume />} />
+            <Route path="/portfolio" element = {<Portfolio />} />
+            <Route path="/portfolio/:slug" element = {<PortfolioDetail />} />
+            <Route path="/blog" element = {<Blog />} />
+            <Route path="/blog/:slug" element = {<BlogDetail />} />
+            <Route path="/contact" element = {<Contact />} />
+          </Routes>
+        </main>
+        <Footer/>
+      </div>
     </Router>
   );
 }

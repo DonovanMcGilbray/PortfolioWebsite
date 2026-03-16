@@ -1,13 +1,13 @@
 const posts = [
     {
         id: 1,
-        title: "...",
-        slug: "...",
-        date: "...",
-        excerpt: "...",
-        coverImage: "",
+        title: "Creating My React Portfolio Website",
+        slug: "creating-react-portfolio",
+        date: "2026-03-15",
+        excerpt: "How I built my personal portfolio website using React and what I learned during the process.",
+        coverImage: "/post1.png",
         content: `
-            Creating a personal portfolio website game me a change to practice building a full web application with React. The main goal was to show my programming work while learning how to organize a front-end project.
+            Creating a personal portfolio website gave me a chance to practice building a full web application with React. The main goal was to show my programming work while learning how to organize a front-end project.
             The site has the pages Home, About, Portfolio, Blog, and Contact. Each page is a separate React component, making it easier to maintain and expand. I also used React Router so users can navigate between pages without refreshing.
             An important part was deploying the site online. I used Vercel to host it, which automatically builds and updates the site whenever I push changes to GitHub. This let me quickly see updates live.
             Working on this portfolio helped me understand how React apps are structured and how components work together to make a complete website.
@@ -19,7 +19,7 @@ const posts = [
         slug: "react-native-vs-react-web",
         date: "2026-03-15",
         excerpt: "Understanding the differences between React Native mobile apps and React web applications.",
-        coverImage: "",
+        coverImage: "/post2.png",
         content: `
             While working on the Porfolio website, I have learned about React development as well as React Native using Expo Go. Although both technologies are based on React, they are designed for different platforms and use different types of components.
             React for the web focuses on building websites that run in a browser. It uses HTML elements such as div, img, and button along with CSS for styling. These applications are deployed to web hosting platforms such as Vercel so users can access them throught a URL.
@@ -33,7 +33,7 @@ const posts = [
         slug: "project-structure-importance",
         date: "2026-03-15",
         excerpt: "How organizing folders like components, pages, and data makes projects easier to manage.",
-        coverImage: "",
+        coverImage: "/post3.png",
         content: `
             As projects become larger, organizing code becomes very important. One thing I have learned while working on projects was how a clear project structure can make development easier and more efficient.
             In my project, files are separated into different folders such as components, pages, and data. Components store reusable peices of the interface like the navigation bar or footer. Pages represent the different sections of the website, such as the Home or Contact page. Data folders can hold structured content like blog posts or project information.

@@ -68,7 +68,7 @@ function Resume() {
                 </ul>
             </section>
             <a href = "/resume.pdf" className = "resume-button">
-                Download Resume
+                View Resume
             </a>
         </div>
     );
