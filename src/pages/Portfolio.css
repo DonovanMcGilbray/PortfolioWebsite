@@ -1,25 +1,42 @@
 .portfolio-container {
-    max-width: 900px;
-    margin: 60px auto;
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 64px 20px;
     text-align: center;
+}
+
+.portfolio-intro {
+    color: var(--text-muted);
+    margin-top: -8px;
+    margin-bottom: 8px;
 }
 
 .projects-grid {
     display: grid;
-    grid-template-columns: minmax(250px, 1fr);
-    gap: 30px;
-    margin-top: 30px;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 28px;
+    margin-top: 36px;
 }
 
 .project-card {
-    background: white;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    overflow: hidden;
+    box-shadow: var(--shadow);
+    color: var(--text);
+    text-align: left;
+    /* Simple, readable hover effect: lift the card and deepen the shadow. */
+    transition: transform var(--transition), box-shadow var(--transition), border-color var(--transition);
 }
 
-.project-card img {
-    border-radius: 6px;
+.project-card:hover {
+    transform: translateY(-6px);
+    box-shadow: var(--shadow-hover);
+    border-color: var(--accent);
+    color: var(--text);
 }
 
 .project-image-container {
@@ -28,7 +45,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: white;
+    background-color: var(--surface-2);
     overflow: hidden;
 }
 
@@ -36,4 +53,39 @@
     max-width: 100%;
     max-height: 100%;
     object-fit: contain;
+    transition: transform var(--transition);
+}
+
+.project-card:hover .project-image-container img {
+    transform: scale(1.04);
+}
+
+.project-body {
+    padding: 20px;
+}
+
+.project-body h2 {
+    font-size: 1.2rem;
+    margin-bottom: 8px;
+}
+
+.project-body p {
+    color: var(--text-muted);
+    font-size: 0.95rem;
+    margin-bottom: 14px;
+}
+
+.project-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+}
+
+.project-tag {
+    font-size: 0.75rem;
+    padding: 3px 10px;
+    border-radius: 999px;
+    background: var(--surface-2);
+    color: var(--text-muted);
+    border: 1px solid var(--border);
 }

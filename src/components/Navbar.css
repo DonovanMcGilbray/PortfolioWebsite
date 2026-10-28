@@ -1,20 +1,63 @@
 .navbar {
+    position: sticky;
+    top: 0;
+    z-index: 100;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 15px 20px;
-    background-color: #bfbfbf;
-    border-bottom: 1px solid #bfbfbf;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 14px 24px;
+    background-color: var(--surface);
+    border-bottom: 1px solid var(--border);
+    box-shadow: var(--shadow);
+    transition: background-color var(--transition), border-color var(--transition);
 }
 
 .navbar-left {
-    font-size: 1.25rem;
-    font-weight: bold;
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--text);
     white-space: nowrap;
+}
+
+.navbar-left:hover {
+    color: var(--accent);
 }
 
 .navbar-right {
     display: flex;
-    gap: 10px;
+    align-items: center;
+    gap: 16px;
+}
+
+.navbar-links {
+    display: flex;
+    gap: 6px;
+}
+
+.navbar-link {
+    padding: 8px 12px;
+    border-radius: 8px;
+    color: var(--text);
+    font-size: 0.95rem;
+    font-weight: 500;
+    transition: background var(--transition), color var(--transition);
+}
+
+.navbar-link:hover {
+    background: var(--surface-2);
+    color: var(--accent);
+}
+
+/* The dropdown "Menu" button is only needed on small screens. */
+.navbar-menu {
+    display: none;
+}
+
+@media (max-width: 720px) {
+    .navbar-links {
+        display: none;
+    }
+    .navbar-menu {
+        display: inline-block;
+    }
 }

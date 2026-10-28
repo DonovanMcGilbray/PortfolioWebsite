@@ -1,19 +1,35 @@
 .footer {
-    margin-top: 40px;
-    padding: 20px;
-    border-top: 1px solid #bfbfbf;
-    background-color: #bfbfbf;
+    margin-top: 48px;
+    padding: 24px;
+    border-top: 1px solid var(--border);
+    background-color: var(--surface);
     display: flex;
     justify-content: space-between;
     align-items: center;
+    flex-wrap: wrap;
+    gap: 12px;
+    transition: background-color var(--transition), border-color var(--transition);
 }
 
-.footer-left {
-    margin-top: 10px;
+.footer-left p {
+    margin: 0;
+    color: var(--text-muted);
+    font-size: 0.9rem;
+}
+
+.footer-right {
+    display: flex;
+    gap: 18px;
+    font-size: 1.3rem;
 }
 
 .footer-right a {
-    margin: 0 10px;
-    color: black;
-    text-decoration: none;
+    color: var(--text-muted);
+    display: inline-flex;
+    transition: color var(--transition), transform var(--transition);
+}
+
+.footer-right a:hover {
+    color: var(--accent);
+    transform: translateY(-2px);
 }

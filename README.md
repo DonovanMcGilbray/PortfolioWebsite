@@ -1,103 +1,145 @@
-Overview
+# Donovan McGilbray — Portfolio Website
 
-This project is a portfolio website built with React to show programming projects, technical skills, and blog posts. The website includes pages for an introduction, resume information, project portfolio, blog posts, and a contact form
+A personal portfolio website built with React. It showcases my projects,
+technical skills, resume, and blog posts, and includes a working contact form
+powered by the Resend email API. The site is designed to be **100% free to
+host and maintain** on Vercel's Hobby tier and Resend's Free plan.
 
+---
 
-Tech Stack
+## 1. Project Overview & Features
 
-Frontend
- - React
- - React Router
- - JavaScript
- - HTML
- - CSS
-Tools & Services
- - GitHub for version control
- - Vercel for deployment
- - Resend API for contact form and handling emails
+- **Responsive design** that looks clean on both mobile and desktop.
+- **Light / dark mode** with a toggle in the navbar (remembers your choice and
+  respects your operating system preference on first visit).
+- **Pages:** Home, About, Resume, Portfolio (with per-project detail pages),
+  Blog (with per-post detail pages), and Contact.
+- **Working contact form** that emails submissions to my inbox via Resend,
+  with validation, a loading state, and success/error feedback.
+- **Spam protection** via a hidden honeypot field that silently drops bot
+  submissions — so spam never uses up the free Resend email quota.
+- **Centralized content:** all text, projects, posts, skills, and links live
+  in a single file (`src/data/portfolioData.ts`) for easy editing.
 
+---
 
-Deployment
+## 2. Tech Stack
 
-The project is deployed using Vercel. Vercel connects directly to the GitHub repository and automatically builds and deploys the site whenever new changes are pushed to the main branch. The deployment process is:
- - push the code to GitHub repository
- - Vercel detects the update
- - Vercel builds the React project
- - the updated site is published automatically
+| Area            | Technology                                   |
+| --------------- | -------------------------------------------- |
+| Framework       | React 19 (Create React App)                  |
+| Routing         | React Router 7                               |
+| Styling         | Plain CSS with CSS variables (light/dark)    |
+| Icons           | react-icons                                  |
+| Contact backend | Vercel Serverless Function + Resend API      |
+| Hosting         | Vercel (Hobby / free tier)                   |
+| Version control | Git + GitHub                                 |
 
+---
 
-Known Limitations:
- - the contact form does not work yet, there is a problem connecting to the Resend API
- - the portfolio information are all static entries and not dynamically loaded from an external source
+## 3. How to Run Locally
 
- 
-# Getting Started with Create React App
+**Prerequisites:** [Node.js](https://nodejs.org/) 18 or newer and npm.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+```bash
+# 1. Clone the repository
+git clone https://github.com/DonovanMcGilbray/PortfolioWebsite.git
+cd PortfolioWebsite
 
-## Available Scripts
+# 2. Install dependencies
+npm install
 
-In the project directory, you can run:
+# 3. (Optional) set up the contact form locally
+cp .env.example .env.local
+# then open .env.local and fill in your real values
 
-### `npm start`
+# 4. Start the development server
+npm start
+```
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+The site runs at [http://localhost:3000](http://localhost:3000).
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+> **Note on the contact form in local dev:** `npm start` runs only the React
+> frontend, not the `/api/contact` serverless function. To test the contact
+> form end-to-end locally, use the [Vercel CLI](https://vercel.com/docs/cli):
+> `npm i -g vercel` then run `vercel dev`, which serves both the frontend and
+> the API route together.
 
-### `npm test`
+### Available scripts
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- `npm start` — run the app in development mode.
+- `npm run build` — build an optimized production bundle into `build/`.
+- `npm test` — run the test runner.
 
-### `npm run build`
+---
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## 4. Content Editing Guide
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+**You can update everything on the site by editing one file:**
+[`src/data/portfolioData.ts`](src/data/portfolioData.ts).
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+The UI components only handle layout — they read all of their text from this
+file. That means you never have to touch component or CSS files just to change
+wording.
 
-### `npm run eject`
+| To change...                     | Edit this export in `portfolioData.ts` |
+| -------------------------------- | -------------------------------------- |
+| Your name, title, bio, email     | `profile`                              |
+| Social links (GitHub, LinkedIn)  | `socialLinks`                          |
+| Navbar links                     | `navItems`                             |
+| Home page intro paragraphs       | `home`                                 |
+| About page text, skills          | `about`                                |
+| Resume summary, education, jobs  | `resume`                               |
+| Contact page heading/intro       | `contact`                              |
+| Projects (Portfolio pages)       | `projects`                             |
+| Blog posts                       | `posts`                                |
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+**Tips:**
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+- Fields like `home.intro`, a project's `description`, and a post's `content`
+  are **arrays of strings** — each string becomes its own paragraph. Add or
+  remove strings to add or remove paragraphs.
+- To add a new project or blog post, copy an existing object in the `projects`
+  or `posts` array and change its fields. Keep each `slug` **unique** — it
+  becomes the page URL (e.g. `/portfolio/my-project`).
+- Images live in the `public/` folder. Reference them by path, e.g.
+  `image: "/project4.png"` points to `public/project4.png`.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+---
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+## 5. Deployment Guide (Vercel + Resend, Free)
 
-## Learn More
+The site auto-deploys: push to the `main` branch on GitHub and Vercel builds
+and publishes the update automatically.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+### Step 1 — Get a free Resend API key
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+1. Create a free account at [resend.com](https://resend.com).
+2. Go to **API Keys** and create a new key. Copy it (you'll paste it into
+   Vercel in Step 2).
+3. The free plan allows sending from `onboarding@resend.dev`, which this
+   project uses by default — so no domain setup is required to get started.
+   (If you later verify your own domain in Resend, update the `from` address
+   in `api/contact.ts`.)
 
-### Code Splitting
+### Step 2 — Add environment variables on Vercel
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+1. In your [Vercel dashboard](https://vercel.com/dashboard), open the project.
+2. Go to **Settings → Environment Variables** and add:
 
-### Analyzing the Bundle Size
+   | Name             | Value                                   |
+   | ---------------- | --------------------------------------- |
+   | `RESEND_API_KEY` | the key you copied from Resend          |
+   | `CONTACT_EMAIL`  | the email that should receive messages  |
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+3. Save, then **redeploy** (Deployments → latest → Redeploy) so the new
+   variables take effect.
 
-### Making a Progressive Web App
+### Step 3 — Done
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+Push to `main` and Vercel deploys automatically. The contact form will send
+emails to your `CONTACT_EMAIL` inbox via Resend.
 
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+> **Staying at $0:** Vercel's Hobby tier and Resend's Free plan cover a
+> personal portfolio comfortably. The honeypot spam filter in `api/contact.ts`
+> prevents bot submissions from eating into the free Resend email quota.

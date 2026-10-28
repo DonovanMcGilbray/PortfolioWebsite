@@ -1,36 +1,128 @@
+/*
+ * index.css — global styles and design system.
+ *
+ * We use CSS variables ("custom properties") for colors and spacing so the
+ * whole site shares one consistent palette. Light and dark themes are just
+ * two sets of these variables; the theme is switched by toggling the
+ * `data-theme` attribute on the <html> element (see ThemeToggle.js).
+ */
+
+/* ---- Light theme (default) ------------------------------------------- */
+:root {
+  --bg: #f5f6f8;
+  --surface: #ffffff;
+  --surface-2: #eef0f4;
+  --text: #16181d;
+  --text-muted: #5b616e;
+  --border: #e2e5ea;
+  --accent: #2563eb;        /* primary blue */
+  --accent-hover: #1d4ed8;
+  --accent-contrast: #ffffff;
+  --shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+  --shadow-hover: 0 12px 28px rgba(0, 0, 0, 0.14);
+  --radius: 12px;
+  --max-width: 1000px;
+  /* One shared transition so hover/theme changes feel consistent and smooth. */
+  --transition: 0.2s ease;
+}
+
+/* ---- Dark theme ------------------------------------------------------ */
+/* These override the variables above when data-theme="dark" is set. */
+:root[data-theme="dark"] {
+  --bg: #0f1115;
+  --surface: #181b22;
+  --surface-2: #20242d;
+  --text: #e8eaed;
+  --text-muted: #9aa0ab;
+  --border: #2a2f3a;
+  --accent: #3b82f6;
+  --accent-hover: #60a5fa;
+  --accent-contrast: #ffffff;
+  --shadow: 0 6px 18px rgba(0, 0, 0, 0.4);
+  --shadow-hover: 0 12px 28px rgba(0, 0, 0, 0.55);
+}
+
+* {
+  box-sizing: border-box;
+}
+
 body {
   margin: 0;
-  font-family: "Inter", sans-serif;
-  background-color: #e6e6e6;
-  color: #111111;
+  font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  background-color: var(--bg);
+  color: var(--text);
+  line-height: 1.6;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  /* Smoothly fade between light and dark themes. */
+  transition: background-color var(--transition), color var(--transition);
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
 }
 
-h1, h2, h3 {
-  color: #111111;
+h1,
+h2,
+h3 {
+  color: var(--text);
+  line-height: 1.25;
+  margin-top: 0;
+}
+
+h1 {
+  font-size: clamp(1.8rem, 4vw, 2.6rem);
+  font-weight: 600;
+}
+
+h2 {
+  font-size: clamp(1.3rem, 2.5vw, 1.6rem);
+  font-weight: 600;
 }
 
 p {
-  color: #111111;
+  color: var(--text);
 }
 
 a {
-  color: #111111;
+  color: var(--accent);
   text-decoration: none;
+  transition: color var(--transition);
 }
 
 a:hover {
-  color: #ffffff;
+  color: var(--accent-hover);
 }
 
-section {
-  border-bottom: 1px solid #bfbfbf;
-  padding-bottom: 20px;
-  margin-bottom: 30px;
+/* Shared helper: a centered content column used by most pages. */
+.page {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 48px 20px;
+}
+
+/* Reusable button styles ---------------------------------------------- */
+.btn {
+  display: inline-block;
+  padding: 11px 20px;
+  border: none;
+  border-radius: 8px;
+  background: var(--accent);
+  color: var(--accent-contrast);
+  font-size: 0.95rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background var(--transition), transform var(--transition);
+}
+
+.btn:hover {
+  background: var(--accent-hover);
+  color: var(--accent-contrast);
+  transform: translateY(-2px);
+}
+
+.btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
 }

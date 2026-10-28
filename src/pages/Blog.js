@@ -1,23 +1,27 @@
 import { Link } from "react-router-dom";
-import posts from "../data/posts";
+import { posts } from "../data/portfolioData";
 import "./Blog.css";
 
 function Blog() {
     return (
-        <div className = "blog-container">
+        <div className="blog-container">
             <h1>Blog</h1>
-            <div className = "blog-grid">
+            <p className="blog-intro">Notes and lessons from projects I have worked on.</p>
+
+            <div className="blog-grid">
                 {posts.map((post) => (
-                    <div key = {post.id} className = "blog-card">
-                        <img src = {post.coverImage} alt = {post.title}/>
-                        <h2>
-                            <Link to = {`/blog/${post.slug}`}>
-                                {post.title}
-                            </Link>
-                        </h2>
-                        <p>{post.date}</p>
-                        <p>{post.excerpt}</p>
-                    </div>
+                    <Link
+                        key={post.id}
+                        to={`/blog/${post.slug}`}
+                        className="blog-card"
+                    >
+                        <img src={post.coverImage} alt={post.title} />
+                        <div className="blog-card-body">
+                            <h2>{post.title}</h2>
+                            <p className="blog-card-date">{post.date}</p>
+                            <p className="blog-card-excerpt">{post.excerpt}</p>
+                        </div>
+                    </Link>
                 ))}
             </div>
         </div>

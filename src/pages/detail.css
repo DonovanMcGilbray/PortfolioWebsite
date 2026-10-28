@@ -1,0 +1,71 @@
+/* Shared styles for the single-item detail pages (project & blog post). */
+.detail-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 56px 20px;
+}
+
+.detail-back {
+    display: inline-block;
+    margin-bottom: 20px;
+    font-size: 0.9rem;
+    color: var(--text-muted);
+}
+
+.detail-back:hover {
+    color: var(--accent);
+}
+
+.detail-date {
+    color: var(--text-muted);
+    font-size: 0.9rem;
+    margin-top: -8px;
+}
+
+.detail-image {
+    width: 100%;
+    max-height: 420px;
+    object-fit: contain;
+    border-radius: var(--radius);
+    background: var(--surface-2);
+    border: 1px solid var(--border);
+    margin: 20px 0;
+}
+
+.detail-container p {
+    color: var(--text-muted);
+}
+
+.detail-container h2 {
+    margin-top: 28px;
+}
+
+.detail-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 12px;
+}
+
+.detail-tag {
+    font-size: 0.8rem;
+    padding: 4px 12px;
+    border-radius: 999px;
+    background: var(--surface-2);
+    color: var(--text-muted);
+    border: 1px solid var(--border);
+}
+
+.detail-links {
+    margin-top: 24px;
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+.detail-not-found {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 80px 20px;
+    text-align: center;
+}
