@@ -7,25 +7,32 @@ function About() {
             <img src={profile.profileImage} alt={profile.name} className="about-image" />
 
             <div className="about-text">
+                <span className="eyebrow">Get to know me</span>
                 <h1>{about.heading}</h1>
 
                 {about.paragraphs.map((paragraph, index) => (
                     <p key={index}>{paragraph}</p>
                 ))}
 
-                <h2>Specializations</h2>
-                <ul>
-                    {about.specializations.map((item) => (
-                        <li key={item}>{item}</li>
-                    ))}
-                </ul>
+                <div className="about-cards">
+                    <div className="about-card glass-card">
+                        <h2>Specializations</h2>
+                        <ul>
+                            {about.specializations.map((item) => (
+                                <li key={item}>{item}</li>
+                            ))}
+                        </ul>
+                    </div>
 
-                <h2>Skills</h2>
-                <ul>
-                    {about.skills.map((item) => (
-                        <li key={item}>{item}</li>
-                    ))}
-                </ul>
+                    <div className="about-card glass-card">
+                        <h2>Skills</h2>
+                        <ul>
+                            {about.skills.map((item) => (
+                                <li key={item}>{item}</li>
+                            ))}
+                        </ul>
+                    </div>
+                </div>
 
                 <a href={profile.resumeUrl} className="btn">
                     View Resume

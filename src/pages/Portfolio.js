@@ -5,6 +5,7 @@ import "./Portfolio.css";
 function Portfolio() {
     return (
         <div className="portfolio-container">
+            <span className="eyebrow">My Work</span>
             <h1>Portfolio</h1>
             <p className="portfolio-intro">A selection of projects I have built.</p>
 
@@ -13,7 +14,7 @@ function Portfolio() {
                     <Link
                         to={`/portfolio/${project.slug}`}
                         key={project.id}
-                        className="project-card"
+                        className="project-card glass-card"
                     >
                         <div className="project-image-container">
                             <img src={project.image} alt={project.title} />

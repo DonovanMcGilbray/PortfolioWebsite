@@ -5,6 +5,7 @@ import "./Blog.css";
 function Blog() {
     return (
         <div className="blog-container">
+            <span className="eyebrow">Writing</span>
             <h1>Blog</h1>
             <p className="blog-intro">Notes and lessons from projects I have worked on.</p>
 
@@ -13,7 +14,7 @@ function Blog() {
                     <Link
                         key={post.id}
                         to={`/blog/${post.slug}`}
-                        className="blog-card"
+                        className="blog-card glass-card"
                     >
                         <img src={post.coverImage} alt={post.title} />
                         <div className="blog-card-body">

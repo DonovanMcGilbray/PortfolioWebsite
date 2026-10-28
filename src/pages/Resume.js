@@ -4,14 +4,17 @@ import { profile, resume } from "../data/portfolioData";
 function Resume() {
     return (
         <div className="resume-container">
-            <h1>Resume</h1>
+            <div className="resume-eyebrow-wrap">
+                <span className="eyebrow">Experience &amp; Skills</span>
+                <h1>Resume</h1>
+            </div>
 
-            <section>
+            <section className="glass-card">
                 <h2>Professional Summary</h2>
                 <p>{resume.summary}</p>
             </section>
 
-            <section>
+            <section className="glass-card">
                 <h2>Technical Skills</h2>
                 <ul>
                     {resume.technicalSkills.map((skill) => (
@@ -22,7 +25,7 @@ function Resume() {
                 </ul>
             </section>
 
-            <section>
+            <section className="glass-card">
                 <h2>Education</h2>
                 {resume.education.map((edu) => (
                     <p key={edu.school}>
@@ -40,7 +43,7 @@ function Resume() {
                 </p>
             </section>
 
-            <section>
+            <section className="glass-card">
                 <h2>Experience</h2>
                 <ul>
                     {resume.experience.map((item) => (

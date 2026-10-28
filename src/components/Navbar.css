@@ -5,16 +5,21 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 14px 24px;
-    background-color: var(--surface);
-    border-bottom: 1px solid var(--border);
-    box-shadow: var(--shadow);
-    transition: background-color var(--transition), border-color var(--transition);
+    padding: 16px 28px;
+    /* Glassmorphism header: translucent + blur so content scrolls softly
+       behind it. */
+    background: var(--glass-bg);
+    backdrop-filter: blur(var(--glass-blur));
+    -webkit-backdrop-filter: blur(var(--glass-blur));
+    border-bottom: 1px solid var(--glass-border);
+    transition: background var(--transition), border-color var(--transition);
 }
 
 .navbar-left {
-    font-size: 1.2rem;
+    font-family: var(--font-heading);
+    font-size: 1.15rem;
     font-weight: 700;
+    letter-spacing: -0.02em;
     color: var(--text);
     white-space: nowrap;
 }
@@ -26,34 +31,43 @@
 .navbar-right {
     display: flex;
     align-items: center;
-    gap: 16px;
+    gap: 10px;
 }
 
 .navbar-links {
     display: flex;
-    gap: 6px;
+    gap: 4px;
 }
 
 .navbar-link {
-    padding: 8px 12px;
-    border-radius: 8px;
-    color: var(--text);
-    font-size: 0.95rem;
+    padding: 8px 14px;
+    border-radius: 999px;
+    color: var(--text-muted);
+    font-size: 0.92rem;
     font-weight: 500;
     transition: background var(--transition), color var(--transition);
 }
 
 .navbar-link:hover {
-    background: var(--surface-2);
+    background: var(--accent-soft);
     color: var(--accent);
 }
 
-/* The dropdown "Menu" button is only needed on small screens. */
+/* Highlight the link for the page you're currently on. */
+.navbar-link.active {
+    color: var(--accent);
+    background: var(--accent-soft);
+}
+
+/* The dropdown "Menu" button is only shown on small screens. */
 .navbar-menu {
     display: none;
 }
 
-@media (max-width: 720px) {
+@media (max-width: 760px) {
+    .navbar {
+        padding: 14px 18px;
+    }
     .navbar-links {
         display: none;
     }

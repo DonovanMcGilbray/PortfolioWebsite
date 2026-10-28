@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import { SingleLevelDropdownMenu } from "./DropdownMenu";
 import ThemeToggle from "./ThemeToggle";
 import { profile, navItems } from "../data/portfolioData";
@@ -13,12 +13,21 @@ export default function Navbar() {
             </Link>
 
             <div className="navbar-right">
-                {/* Inline nav links for wider screens. */}
+                {/* Inline nav links for wider screens. NavLink adds an
+                    "active" class to the link for the current page. */}
                 <div className="navbar-links">
                     {navItems.map((item) => (
-                        <Link key={item.url} to={item.url} className="navbar-link">
+                        <NavLink
+                            key={item.url}
+                            to={item.url}
+                            // "end" so "/" is only active on the exact home path.
+                            end={item.url === "/"}
+                            className={({ isActive }) =>
+                                isActive ? "navbar-link active" : "navbar-link"
+                            }
+                        >
                             {item.title}
-                        </Link>
+                        </NavLink>
                     ))}
                 </div>
 

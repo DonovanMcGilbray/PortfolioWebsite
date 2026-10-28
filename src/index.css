@@ -1,60 +1,96 @@
 /*
  * index.css — global styles and design system.
  *
- * We use CSS variables ("custom properties") for colors and spacing so the
- * whole site shares one consistent palette. Light and dark themes are just
- * two sets of these variables; the theme is switched by toggling the
- * `data-theme` attribute on the <html> element (see ThemeToggle.js).
+ * Figma-inspired aesthetic: spacious, clean, neutral backgrounds with a
+ * crisp accent color, soft 1px borders, subtle glassmorphism on cards, and
+ * smooth hover elevation.
+ *
+ * Colors and spacing live in CSS variables ("custom properties") so the whole
+ * site shares one palette. Light and dark themes are just two sets of these
+ * variables, switched by the `data-theme` attribute on <html> (ThemeToggle.js).
  */
 
 /* ---- Light theme (default) ------------------------------------------- */
 :root {
-  --bg: #f5f6f8;
+  /* Neutral background ramp */
+  --bg: #f7f8fa;
+  --bg-elevated: #ffffff;
   --surface: #ffffff;
-  --surface-2: #eef0f4;
-  --text: #16181d;
-  --text-muted: #5b616e;
-  --border: #e2e5ea;
-  --accent: #2563eb;        /* primary blue */
-  --accent-hover: #1d4ed8;
+  --surface-2: #f1f3f6;
+
+  /* Glassmorphism: translucent surface + blur, used on cards/navbar */
+  --glass-bg: rgba(255, 255, 255, 0.65);
+  --glass-border: rgba(15, 23, 42, 0.08);
+  --glass-blur: 12px;
+
+  /* Text */
+  --text: #0f172a;
+  --text-muted: #64748b;
+
+  /* Borders & accents */
+  --border: rgba(15, 23, 42, 0.08);
+  --border-strong: rgba(15, 23, 42, 0.14);
+  --accent: #4f46e5;        /* indigo */
+  --accent-hover: #4338ca;
+  --accent-soft: rgba(79, 70, 229, 0.1);
   --accent-contrast: #ffffff;
-  --shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
-  --shadow-hover: 0 12px 28px rgba(0, 0, 0, 0.14);
-  --radius: 12px;
-  --max-width: 1000px;
-  /* One shared transition so hover/theme changes feel consistent and smooth. */
-  --transition: 0.2s ease;
+
+  /* Shadows (soft, layered) */
+  --shadow: 0 1px 2px rgba(15, 23, 42, 0.04), 0 8px 24px rgba(15, 23, 42, 0.06);
+  --shadow-hover: 0 4px 8px rgba(15, 23, 42, 0.06), 0 20px 40px rgba(15, 23, 42, 0.12);
+
+  /* Shape & motion */
+  --radius: 16px;
+  --radius-sm: 10px;
+  --max-width: 1080px;
+  --transition: 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+
+  /* Typography */
+  --font-heading: "Space Grotesk", "Inter", sans-serif;
+  --font-body: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
 }
 
 /* ---- Dark theme ------------------------------------------------------ */
-/* These override the variables above when data-theme="dark" is set. */
 :root[data-theme="dark"] {
-  --bg: #0f1115;
-  --surface: #181b22;
-  --surface-2: #20242d;
-  --text: #e8eaed;
-  --text-muted: #9aa0ab;
-  --border: #2a2f3a;
-  --accent: #3b82f6;
-  --accent-hover: #60a5fa;
-  --accent-contrast: #ffffff;
-  --shadow: 0 6px 18px rgba(0, 0, 0, 0.4);
-  --shadow-hover: 0 12px 28px rgba(0, 0, 0, 0.55);
+  --bg: #0b0d12;
+  --bg-elevated: #14171e;
+  --surface: #14171e;
+  --surface-2: #1b1f28;
+
+  --glass-bg: rgba(20, 23, 30, 0.6);
+  --glass-border: rgba(255, 255, 255, 0.08);
+
+  --text: #f1f5f9;
+  --text-muted: #94a3b8;
+
+  --border: rgba(255, 255, 255, 0.08);
+  --border-strong: rgba(255, 255, 255, 0.16);
+  --accent: #818cf8;
+  --accent-hover: #a5b4fc;
+  --accent-soft: rgba(129, 140, 248, 0.14);
+  --accent-contrast: #0b0d12;
+
+  --shadow: 0 1px 2px rgba(0, 0, 0, 0.3), 0 8px 24px rgba(0, 0, 0, 0.4);
+  --shadow-hover: 0 4px 8px rgba(0, 0, 0, 0.35), 0 20px 40px rgba(0, 0, 0, 0.55);
 }
 
 * {
   box-sizing: border-box;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   margin: 0;
-  font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-family: var(--font-body);
   background-color: var(--bg);
   color: var(--text);
-  line-height: 1.6;
+  line-height: 1.7;
+  letter-spacing: -0.01em;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  /* Smoothly fade between light and dark themes. */
   transition: background-color var(--transition), color var(--transition);
 }
 
@@ -62,22 +98,29 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
 }
 
+/* ---- Typography & headings ------------------------------------------ */
 h1,
 h2,
 h3 {
+  font-family: var(--font-heading);
   color: var(--text);
-  line-height: 1.25;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
   margin-top: 0;
+  font-weight: 600;
 }
 
 h1 {
-  font-size: clamp(1.8rem, 4vw, 2.6rem);
-  font-weight: 600;
+  font-size: clamp(2rem, 5vw, 3.2rem);
+  font-weight: 700;
 }
 
 h2 {
-  font-size: clamp(1.3rem, 2.5vw, 1.6rem);
-  font-weight: 600;
+  font-size: clamp(1.4rem, 3vw, 1.9rem);
+}
+
+h3 {
+  font-size: clamp(1.1rem, 2vw, 1.3rem);
 }
 
 p {
@@ -94,35 +137,87 @@ a:hover {
   color: var(--accent-hover);
 }
 
-/* Shared helper: a centered content column used by most pages. */
+/* ---- Layout helpers -------------------------------------------------- */
+/* A centered content column used by most pages, with generous vertical space. */
 .page {
   max-width: var(--max-width);
   margin: 0 auto;
-  padding: 48px 20px;
+  padding: 88px 24px;
 }
 
-/* Reusable button styles ---------------------------------------------- */
-.btn {
+/* Small uppercase label used above section headings for a polished look. */
+.eyebrow {
   display: inline-block;
-  padding: 11px 20px;
-  border: none;
-  border-radius: 8px;
+  font-family: var(--font-heading);
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 12px;
+}
+
+/* ---- Buttons --------------------------------------------------------- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 12px 24px;
+  border: 1px solid transparent;
+  border-radius: 999px;
   background: var(--accent);
   color: var(--accent-contrast);
+  font-family: var(--font-body);
   font-size: 0.95rem;
-  font-weight: 500;
+  font-weight: 600;
   cursor: pointer;
-  transition: background var(--transition), transform var(--transition);
+  transition: background var(--transition), transform var(--transition), box-shadow var(--transition);
 }
 
 .btn:hover {
   background: var(--accent-hover);
   color: var(--accent-contrast);
   transform: translateY(-2px);
+  box-shadow: 0 10px 24px var(--accent-soft);
 }
 
 .btn:disabled {
-  opacity: 0.6;
+  opacity: 0.55;
   cursor: not-allowed;
   transform: none;
+  box-shadow: none;
+}
+
+/* Secondary (outlined) button variant. */
+.btn-secondary {
+  background: transparent;
+  color: var(--text);
+  border: 1px solid var(--border-strong);
+}
+
+.btn-secondary:hover {
+  background: var(--surface-2);
+  color: var(--text);
+  border-color: var(--accent);
+  box-shadow: none;
+}
+
+/* ---- Reusable glass card -------------------------------------------- */
+/* Subtle glassmorphism: translucent background + blur + soft 1px border. */
+.glass-card {
+  background: var(--glass-bg);
+  backdrop-filter: blur(var(--glass-blur));
+  -webkit-backdrop-filter: blur(var(--glass-blur));
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  transition: transform var(--transition), box-shadow var(--transition), border-color var(--transition);
+}
+
+/* Lift + brighten border on hover for an interactive, elevated feel. */
+.glass-card:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-hover);
+  border-color: var(--accent);
 }

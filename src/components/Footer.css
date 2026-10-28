@@ -1,14 +1,16 @@
 .footer {
-    margin-top: 48px;
-    padding: 24px;
-    border-top: 1px solid var(--border);
-    background-color: var(--surface);
+    margin-top: 64px;
+    padding: 28px;
+    border-top: 1px solid var(--glass-border);
+    background: var(--glass-bg);
+    backdrop-filter: blur(var(--glass-blur));
+    -webkit-backdrop-filter: blur(var(--glass-blur));
     display: flex;
     justify-content: space-between;
     align-items: center;
     flex-wrap: wrap;
-    gap: 12px;
-    transition: background-color var(--transition), border-color var(--transition);
+    gap: 14px;
+    transition: background var(--transition), border-color var(--transition);
 }
 
 .footer-left p {
@@ -19,17 +21,23 @@
 
 .footer-right {
     display: flex;
-    gap: 18px;
-    font-size: 1.3rem;
+    gap: 16px;
+    font-size: 1.25rem;
 }
 
 .footer-right a {
     color: var(--text-muted);
     display: inline-flex;
-    transition: color var(--transition), transform var(--transition);
+    width: 40px;
+    height: 40px;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    transition: color var(--transition), background var(--transition), transform var(--transition);
 }
 
 .footer-right a:hover {
     color: var(--accent);
+    background: var(--accent-soft);
     transform: translateY(-2px);
 }
