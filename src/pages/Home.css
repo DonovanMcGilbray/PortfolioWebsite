@@ -3,51 +3,73 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    padding: 80px 24px;
+    /* Soft radial accent glow behind the hero for depth. */
+    background:
+        radial-gradient(circle at 20% 20%, var(--accent-soft), transparent 45%),
+        radial-gradient(circle at 80% 80%, var(--accent-soft), transparent 45%);
 }
 
 .profile-card {
     display: flex;
     align-items: center;
-    gap: 40px;
-    background: #bfbfbf;
-    padding: 40px;
-    width: 700px;
-    max-width: 100%;
-    min-height: 60%;
-    border-radius: 12px;
-    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
+    gap: 56px;
+    max-width: 880px;
+    width: 100%;
+    padding: 56px;
+    /* Uses the shared glass-card look (set in index.css via className). */
 }
 
 .profile-image {
-    width: 200px;
-    height: 200px;
+    width: 210px;
+    height: 210px;
     border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid var(--glass-border);
+    box-shadow: var(--shadow);
+    flex-shrink: 0;
 }
 
 .profile-info {
     text-align: left;
-    color: black;
 }
 
 .profile-info h1 {
-    margin-bottom: 10px;
-}
-
-.profile-info h2 {
-    margin-bottom: 10px;
+    margin-bottom: 6px;
 }
 
 .profile-info p {
-    margin-bottom: 20px;
-    color: black;
+    color: var(--text-muted);
+    margin-bottom: 14px;
+    font-size: 1.02rem;
+}
+
+.home-actions {
+    display: flex;
+    gap: 14px;
+    margin-top: 28px;
+    flex-wrap: wrap;
+}
+
+/* The hero card shouldn't lift on hover (it's the page centerpiece). */
+.profile-card.glass-card:hover {
+    transform: none;
 }
 
 @media (max-width: 768px) {
+    .home-content {
+        padding: 56px 20px;
+    }
     .profile-card {
         flex-direction: column;
         text-align: center;
+        padding: 40px 28px;
+        gap: 32px;
     }
     .profile-info {
         text-align: center;
+    }
+    .home-actions {
+        justify-content: center;
     }
 }

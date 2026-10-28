@@ -1,30 +1,33 @@
 import "./Home.css";
+import { Link } from "react-router-dom";
+import { profile, home } from "../data/portfolioData";
 
 function Home() {
     return (
-        <div className = "home-content">
-            <div className = "profile-card">
+        <div className="home-content">
+            <div className="profile-card glass-card">
                 <img
-                    src = "/profile.jpg"
-                    alt = "Profile"
-                    className = "profile-image"
+                    src={profile.profileImage}
+                    alt={profile.name}
+                    className="profile-image"
                 />
-                <div className = "profile-info">
-                    <h1>Donovan McGilbray</h1>
-                    <h2>Software Developer</h2>
-                    <p>
-                        I am a Computer Science student at California State University, Bakersfield - Antelope Valley,
-                        with an expected graduation date of May 2027. I am interested in frontend software engineering 
-                        and building web applications.
-                    </p>
-                    <p>
-                        I work with React, JavaScript, HTML, and CSS to create responsive user interfaces and I have 
-                        experience building mobile applications using React Native with Expo.
-                    </p>
-                    <p>
-                        My projects focus on clean component design, structured data, and deploying applications using 
-                        GitHub and Vercel.
-                    </p>
+                <div className="profile-info">
+                    <span className="eyebrow">{home.subheading}</span>
+                    <h1>{home.heading}</h1>
+
+                    {/* Each paragraph of the intro comes from portfolioData. */}
+                    {home.intro.map((paragraph, index) => (
+                        <p key={index}>{paragraph}</p>
+                    ))}
+
+                    <div className="home-actions">
+                        <Link to="/portfolio" className="btn">
+                            View My Work
+                        </Link>
+                        <Link to="/contact" className="btn btn-secondary">
+                            Get in Touch
+                        </Link>
+                    </div>
                 </div>
             </div>
         </div>

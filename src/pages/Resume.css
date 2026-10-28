@@ -1,23 +1,68 @@
 .resume-container {
-    max-width: 900px;
-    margin: 60px auto;
-    padding: 20px;
-    color: black;
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 88px 24px;
+    color: var(--text);
 }
 
-.resume-container h1 {
+.resume-eyebrow-wrap {
     text-align: center;
-    margin-bottom: 40px
+    margin-bottom: 48px;
 }
 
-section {
-    margin-bottom: 30px;
+.resume-eyebrow-wrap h1 {
+    margin-top: 8px;
 }
 
-h2 {
-    margin-bottom: 10px;
+.resume-container section {
+    padding: 30px 32px;
+    margin-bottom: 24px;
+    /* glass-card (index.css) adds border, blur, shadow. */
 }
 
-ul {
+/* Keep resume sections calm — no hover lift. */
+.resume-container section:hover {
+    transform: none;
+    box-shadow: var(--shadow);
+    border-color: var(--glass-border);
+}
+
+.resume-container h2 {
+    margin-bottom: 18px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid var(--border);
+}
+
+.resume-container p {
+    color: var(--text-muted);
+}
+
+.resume-container ul {
     padding-left: 20px;
+    margin: 0;
+    color: var(--text-muted);
+}
+
+.resume-container li {
+    margin-bottom: 16px;
+}
+
+.resume-container li strong,
+.resume-container p strong {
+    color: var(--text);
+}
+
+.resume-container .btn {
+    display: flex;
+    width: fit-content;
+    margin: 8px auto 0;
+}
+
+@media (max-width: 600px) {
+    .resume-container {
+        padding: 56px 20px;
+    }
+    .resume-container section {
+        padding: 24px 22px;
+    }
 }
