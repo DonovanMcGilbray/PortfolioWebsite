@@ -1,26 +1,37 @@
 import { useParams, Link } from "react-router-dom";
-import posts from "../data/posts";
+import { posts } from "../data/portfolioData";
+import "./detail.css";
 
 function BlogDetail() {
     const { slug } = useParams();
     const post = posts.find((p) => p.slug === slug);
-    if(!post) {
-        return <h2>Post not found</h2>;
+
+    if (!post) {
+        return (
+            <div className="detail-not-found">
+                <h2>Post not found</h2>
+                <Link to="/blog" className="btn">
+                    Back to Blog
+                </Link>
+            </div>
+        );
     }
+
     return (
-        <div style = {{ maxWidth: "800px", margin: "50px auto" }}>
+        <div className="detail-container">
+            <Link to="/blog" className="detail-back">
+                ← Back to Blog
+            </Link>
+
             <h1>{post.title}</h1>
-            <p>{post.date}</p>
-            <img
-                src = {post.coverImage}
-                alt = {post.title}
-                style = {{ width: "100%", maxHeight: "400px", objectFit: "contain" }}
-            />
-            <p style = {{ marginTop: "20px" }}>
-                {post.content}
-            </p>
-            <br/>
-            <Link to = "/blog">Back to Blog</Link>
+            <p className="detail-date">{post.date}</p>
+
+            <img src={post.coverImage} alt={post.title} className="detail-image" />
+
+            {/* content is an array of paragraphs, so each renders separately. */}
+            {post.content.map((paragraph, index) => (
+                <p key={index}>{paragraph}</p>
+            ))}
         </div>
     );
 }

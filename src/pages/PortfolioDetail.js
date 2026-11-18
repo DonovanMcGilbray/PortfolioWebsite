@@ -1,35 +1,58 @@
 import { useParams, Link } from "react-router-dom";
-import projects from "../data/projects";
+import { projects } from "../data/portfolioData";
+import "./detail.css";
 
 function PortfolioDetail() {
     const { slug } = useParams();
     const project = projects.find((p) => p.slug === slug);
-    if(!project) {
-        return <h2>Project not found</h2>;
+
+    if (!project) {
+        return (
+            <div className="detail-not-found">
+                <h2>Project not found</h2>
+                <Link to="/portfolio" className="btn">
+                    Back to Portfolio
+                </Link>
+            </div>
+        );
     }
+
     return (
-        <div style = {{ maxWidth: "800px", margin: "50px auto" }}>
+        <div className="detail-container">
+            <Link to="/portfolio" className="detail-back">
+                ← Back to Portfolio
+            </Link>
+
             <h1>{project.title}</h1>
-            <img 
-                src = {project.image}
-                alt = {project.title}
-                style = {{ width: "100%", maxHeight: "400px", objectFit: "contain" }}
-            />
-            <p>{project.description}</p>
+
+            <img src={project.image} alt={project.title} className="detail-image" />
+
+            {/* description is an array of paragraphs in portfolioData. */}
+            {project.description.map((paragraph, index) => (
+                <p key={index}>{paragraph}</p>
+            ))}
+
             <h2>Tech Stack</h2>
-            <ul>
-                {project.tech.map((tech, index) => (
-                    <li key = {index}>{tech}</li>
+            <div className="detail-tags">
+                {project.tech.map((tech) => (
+                    <span key={tech} className="detail-tag">
+                        {tech}
+                    </span>
                 ))}
-            </ul>
-            {project.github && (
-                <p>
-                    <a href = {project.github} target = "_blank" rel = "noreferrer">
-                        View GitHub
+            </div>
+
+            <div className="detail-links">
+                {project.github && (
+                    <a
+                        href={project.github}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="btn"
+                    >
+                        View on GitHub
                     </a>
-                </p>
-            )}
-            <Link to = "/portfolio">Back to Portfolio</Link>
+                )}
+            </div>
         </div>
     );
 }

@@ -1,0 +1,88 @@
+.dropdown {
+    position: relative;
+    display: inline-flex;
+}
+
+.dropdown-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    height: 42px;
+    padding: 0 18px;
+    border: 1px solid var(--border-strong);
+    border-radius: 999px;
+    background: var(--surface);
+    color: var(--text);
+    font-family: var(--font-body);
+    font-size: 0.9rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background var(--transition), border-color var(--transition);
+}
+
+.dropdown-button:hover {
+    background: var(--surface-2);
+    border-color: var(--accent);
+}
+
+.dropdown-chevron {
+    display: inline-flex;
+    font-size: 0.72rem;
+    transition: transform var(--transition);
+}
+
+.dropdown-list {
+    position: absolute;
+    right: 0;
+    top: 52px;
+    width: 220px;
+    margin: 0;
+    padding: 8px;
+    list-style: none;
+    /* Glassmorphism panel to match the navbar/cards. */
+    background: var(--glass-bg);
+    backdrop-filter: blur(var(--glass-blur));
+    -webkit-backdrop-filter: blur(var(--glass-blur));
+    border: 1px solid var(--glass-border);
+    border-radius: var(--radius-sm);
+    box-shadow: var(--shadow-hover);
+    /* Gentle entrance animation. */
+    animation: dropdown-in 0.18s ease;
+    transform-origin: top right;
+}
+
+@keyframes dropdown-in {
+    from {
+        opacity: 0;
+        transform: translateY(-6px) scale(0.98);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+.dropdown-item {
+    border-radius: var(--radius-sm);
+}
+
+.dropdown-link {
+    display: block;
+    width: 100%;
+    padding: 11px 14px;
+    border: none;
+    background: none;
+    border-radius: var(--radius-sm);
+    text-align: left;
+    color: var(--text-muted);
+    font-family: var(--font-body);
+    font-size: 0.92rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background var(--transition), color var(--transition);
+}
+
+.dropdown-link:hover {
+    background: var(--accent-soft);
+    color: var(--accent);
+}

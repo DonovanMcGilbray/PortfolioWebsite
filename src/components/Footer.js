@@ -1,19 +1,33 @@
 import "./Footer.css";
 import { FaGithub, FaLinkedin } from "react-icons/fa";
+import { profile, socialLinks } from "../data/portfolioData";
+
+// Map each social link label to its icon so the Footer stays data-driven.
+const iconFor = {
+    GitHub: <FaGithub />,
+    LinkedIn: <FaLinkedin />,
+};
 
 function Footer() {
     return (
-        <footer className = "footer">
-            <div className = "footer-left">
-                <p>{new Date().getFullYear()} Donovan McGilbray</p>
+        <footer className="footer">
+            <div className="footer-left">
+                <p>
+                    © {new Date().getFullYear()} {profile.name}
+                </p>
             </div>
-            <div className = "footer-right">
-                <a href = "https://github.com/DonovanMcGilbray" target = "_blank" rel = "noopener noreferrer">
-                    <FaGithub/>
-                </a>
-                <a href = "https://www.linkedin.com/in/donovan-mcgilbray-67a2913b7" target = "_blank" rel = "noopener noreferrer">
-                    <FaLinkedin/>
-                </a>
+            <div className="footer-right">
+                {socialLinks.map((link) => (
+                    <a
+                        key={link.label}
+                        href={link.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        aria-label={link.label}
+                    >
+                        {iconFor[link.label] ?? link.label}
+                    </a>
+                ))}
             </div>
         </footer>
     );

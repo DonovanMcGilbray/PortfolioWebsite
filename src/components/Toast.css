@@ -1,0 +1,86 @@
+.toast {
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    max-width: 380px;
+    padding: 14px 16px;
+    border-radius: var(--radius-sm);
+    /* Glassmorphism to match the rest of the UI. */
+    background: var(--glass-bg);
+    backdrop-filter: blur(var(--glass-blur));
+    -webkit-backdrop-filter: blur(var(--glass-blur));
+    border: 1px solid var(--glass-border);
+    box-shadow: var(--shadow-hover);
+    /* Slide + fade in from the right. */
+    animation: toast-in 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@keyframes toast-in {
+    from {
+        opacity: 0;
+        transform: translateX(24px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.toast-icon {
+    display: inline-flex;
+    font-size: 1.2rem;
+    flex-shrink: 0;
+}
+
+.toast-success .toast-icon {
+    color: #16a34a;
+}
+
+.toast-error .toast-icon {
+    color: #dc2626;
+}
+
+/* A colored left edge reinforces the toast type. */
+.toast-success {
+    border-left: 3px solid #16a34a;
+}
+
+.toast-error {
+    border-left: 3px solid #dc2626;
+}
+
+.toast-message {
+    margin: 0;
+    font-size: 0.92rem;
+    color: var(--text);
+    flex: 1;
+}
+
+.toast-close {
+    display: inline-flex;
+    padding: 4px;
+    border: none;
+    background: none;
+    color: var(--text-muted);
+    cursor: pointer;
+    border-radius: 6px;
+    transition: color var(--transition), background var(--transition);
+}
+
+.toast-close:hover {
+    color: var(--text);
+    background: var(--surface-2);
+}
+
+@media (max-width: 480px) {
+    .toast {
+        left: 16px;
+        right: 16px;
+        bottom: 16px;
+        max-width: none;
+    }
+}
